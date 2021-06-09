@@ -2,56 +2,66 @@ package com.project.database.modal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.springframework.lang.NonNull;
 
 @Entity
 public class RateDetails {
-    
+
     @Id
-    @Column(name="sl_no")
-    private Integer sl_no;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    
+    
+    @Column(name = "Organization_id")
+    @NonNull
+    private int organization_id;
 
     @Column(name="Service_id")
+    @NonNull
     private int Service_id;
 
-    @Column(name="Provider_id")
-    private int Provider_id;
-
     @Column(name="Rate")
+    @NonNull
     private double Rate;
 
     @Column(name="Discounted_Rate")
+    @NonNull
     private double Discounted_rate;
 
-    public RateDetails(){
-        
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getOrganization_id() {
+        return organization_id;
+    }
+
+    public void setOrganization_id(int organization_id) {
+        this.organization_id = organization_id;
     }
 
     public int getService_id() {
         return Service_id;
     }
+
     public void setService_id(int service_id) {
         Service_id = service_id;
     }
-    public int getProvider_id() {
-        return Provider_id;
-    }
-    public void setProvider_id(int provider_id) {
-        Provider_id = provider_id;
-    }
+
     public double getRate() {
         return Rate;
     }
+
     public void setRate(double rate) {
         Rate = rate;
-    }
-    
-    public Integer getSl_no() {
-        return sl_no;
-    }
-
-    public void setSl_no(Integer sl_no) {
-        this.sl_no = sl_no;
     }
 
     public double getDiscounted_rate() {
@@ -61,4 +71,18 @@ public class RateDetails {
     public void setDiscounted_rate(double discounted_rate) {
         Discounted_rate = discounted_rate;
     }
+
+    public RateDetails(int id, int organization_id, int service_id, double rate, double discounted_rate) {
+        this.id = id;
+        this.organization_id = organization_id;
+        Service_id = service_id;
+        Rate = rate;
+        Discounted_rate = discounted_rate;
+    }
+
+    public RateDetails() {
+    }
+
+   
+    
 }

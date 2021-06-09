@@ -1,64 +1,58 @@
 package com.project.database.modal;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
+import org.springframework.lang.NonNull;
 
 @Entity
 public class Provider {
-    
-    @Column(name="sl_no")
-    private Integer sl_no;
-
-    @Column(name="Provider_type")
-    private String Provider_type;
-
-    @Column(name="Organization_id")
-    private int Organization_id;
-
-    @Column(name="Organization_name")
-    private String Organization_name;
-
-    @Column(name="Provider_name")
-    private String Provider_name;
-
-    @Column(name="Email_id")
-    private String Email_id;
-
-    @Column(name="Phone_Number")
-    private int Phone_number;
 
     @Id
-    @Column(name="Provider_id")
+    @Column(name = "Provider_id")
+    @NonNull
     private int Provider_id;
 
-    public Provider(){
+    @Column(name = "Provider_name")
+    @NonNull
+    private String Provider_name;
 
+    @Column(name = "Email_id")
+    @NonNull
+    private String Email_id;
+
+    @Column(name = "Phone_Number")
+    @Size(min = 10, max = 10)
+    private int Phone_number;
+
+    @Column(name = "Gender")
+    @NonNull
+    private char Gender;
+
+    @Column(name = "Organization_id")
+    @NonNull
+    private int Organization_id;
+
+    public Provider() {
     }
 
-    public String getProvider_type() {
-        return Provider_type;
-    }
-
-    public void setProvider_type(String provider_type) {
-        Provider_type = provider_type;
-    }
-
-    public int getOrganization_id() {
-        return Organization_id;
-    }
-
-    public void setOrganization_id(int organization_id) {
+    public Provider(int provider_id, String provider_name, String email_id, int phone_number, char gender,
+            int organization_id) {
+        Provider_id = provider_id;
+        Provider_name = provider_name;
+        Email_id = email_id;
+        Phone_number = phone_number;
+        Gender = gender;
         Organization_id = organization_id;
     }
 
-    public String getOrganization_name() {
-        return Organization_name;
+    public int getProvider_id() {
+        return Provider_id;
     }
 
-    public void setOrganization_name(String organization_name) {
-        Organization_name = organization_name;
+    public void setProvider_id(int provider_id) {
+        Provider_id = provider_id;
     }
 
     public String getProvider_name() {
@@ -77,16 +71,6 @@ public class Provider {
         Email_id = email_id;
     }
 
-    
-
-    public int getProvider_id() {
-        return Provider_id;
-    }
-
-    public void setProvider_id(int provider_id) {
-        Provider_id = provider_id;
-    }
-
     public int getPhone_number() {
         return Phone_number;
     }
@@ -95,11 +79,20 @@ public class Provider {
         Phone_number = phone_number;
     }
 
-    public Integer getSl_no() {
-        return sl_no;
+    public char getGender() {
+        return Gender;
     }
 
-    public void setSl_no(Integer sl_no) {
-        this.sl_no = sl_no;
+    public void setGender(char gender) {
+        Gender = gender;
     }
+
+    public int getOrganization_id() {
+        return Organization_id;
+    }
+
+    public void setOrganization_id(int organization_id) {
+        Organization_id = organization_id;
+    }
+
 }
